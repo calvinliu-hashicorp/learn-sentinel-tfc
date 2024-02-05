@@ -19,7 +19,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "random_pet" "name" {
-  length    = 3
+  length    = 4
   separator = "-"
   prefix    = "pet"
 }
