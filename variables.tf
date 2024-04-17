@@ -13,4 +13,6 @@ variable "instance_name" {
   default = "Provisioned by Terraform"
 }
 
-variable "tfc_api_key" {}
+variable "tfc_api_key" {
+  default = "my_key_value"
+}
