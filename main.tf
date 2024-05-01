@@ -30,7 +30,7 @@ resource "aws_instance" "ubuntu" {
   disable_api_termination     = true
   user_data                   = file("sayhello.sh")
   user_data_replace_on_change = true
-  associate_public_ip_address = true
+  # associate_public_ip_address = true
   tags = {
     Name = var.instance_name
     Pet  = "${random_pet.name.id}"
