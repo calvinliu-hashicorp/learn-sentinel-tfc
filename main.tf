@@ -24,6 +24,18 @@ resource "random_pet" "name" {
   prefix    = "pet"
 }
 
+locals {
+  service_name = "forum"
+  owner        = "Community Team"
+}
+
+locals {
+  # Common tags to be assigned to all resources
+  common_tags = {
+    Service = local.service_name
+    Owner   = local.owner
+  }
+}
 resource "aws_instance" "ubuntu" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = var.instance_type
@@ -31,8 +43,13 @@ resource "aws_instance" "ubuntu" {
   user_data                   = file("sayhello.sh")
   user_data_replace_on_change = true
   # associate_public_ip_address = true
-  tags = {
-    Name = var.instance_name
-    Pet  = "${random_pet.name.id}"
-  }
+  # tags = {
+  #   Name = var.instance_name
+  #   Pet  = "${random_pet.name.id}"
+  # }
+  tags = local.common_tags
+}
+
+output "vm_tags" {
+  value = local.common_tags[0]
 }
