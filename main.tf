@@ -51,5 +51,5 @@ resource "aws_instance" "ubuntu" {
 }
 
 output "vm_tags" {
-  value = local.common_tags.type
+  value = type(local.common_tags)
 }
