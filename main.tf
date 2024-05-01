@@ -27,7 +27,7 @@ resource "random_pet" "name" {
 resource "aws_instance" "ubuntu" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instance_type
-
+  disable_api_termination = true
   tags = {
     Name = var.instance_name
     Pet = "${random_pet.name.id}"
