@@ -51,5 +51,5 @@ resource "aws_instance" "ubuntu" {
 }
 
 output "vm_tags" {
-  value = local.common_tags[0]
+  value = local.common_tags[Service]
 }
